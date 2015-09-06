@@ -60,6 +60,24 @@ try:
 
 			except: 
 				print "Enter True or False."
+
+			try: 
+				terrible_label=input('Is this terrible? Enter True or False.\n')
+				print ("You entered: ", terrible_label)
+
+				cur.execute ("""
+					  UPDATE Messages
+					  SET Terrible=%s
+					  WHERE ID=%s
+					""", (terrible_label, str(i)))
+				con.commit()
+
+			except KeyboardInterrupt: 
+				print ("last message: ", i)
+				break 
+
+			except: 
+				print "Enter True or False."
 		
 		cursor.close()
 		con.close()
